@@ -1,12 +1,15 @@
 import express from 'express';
 const router = express.Router();
-import userModel from '../controllers/userController.js';
 
-router.post('/users', userModel.createUser);
-router.get('/users', userModel.getUsers);
-router.get('/users/:id', userModel.getUserId);
-router.put('/users/:id', userModel.updateUser);
-router.delete('/users/:id', userModel.deleteUser);
-router.delete('/users', userModel.deleteUserAll);
+import { getAllUsers, createUser, getUserById, updateUser, deleteUser} from '../controllers/userController.js';
+
+import validator from '../utils/validators.js';
+
+router.get('/users', getAllUsers);
+router.get('/users/:id', getUserById);
+router.post('/users', validator, createUser);
+router.put('/users/:id', updateUser);
+router.delete('/users/:id', deleteUser);
+// router.delete('/users/', deleteUserAll);
 
 export default router;
