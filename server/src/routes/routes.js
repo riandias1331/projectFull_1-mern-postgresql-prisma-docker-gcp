@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { getAllUsers, createUser, getUserById, updateUser, deleteUser} from '../controllers/userController.js';
+import { getAllUsers, createUser, getUserById, updateUser, deleteUser, deleteAll} from '../controllers/userController.js';
 
 import validator from '../utils/validators.js';
 
@@ -10,6 +10,6 @@ router.get('/users/:id', getUserById);
 router.post('/users', validator, createUser);
 router.put('/users/:id', updateUser);
 router.delete('/users/:id', deleteUser);
-// router.delete('/users/', deleteUserAll);
+router.delete('/users/', deleteAll);
 
 export default router;
